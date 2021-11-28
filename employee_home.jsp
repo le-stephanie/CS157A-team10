@@ -42,8 +42,32 @@
         </a>
     </h1>
 
-    <h2 class="mt-4">You are signed in as: Employee# <%= request.getParameter("username")%></h2>
+    <% 
+    String db = "anishell";
+    String user = "root";
+    String password = "Turtle_1960";
+    %>
     
+    <%
+    // gets the string input from login page "username" 
+    // as a String variable to use in SQL query
+    String shelter_id = request.getParameter("username"); 
+
+    try { 
+        java.sql.Connection con; 
+        Class.forName("com.mysql.jdbc.Driver");
+        con =DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db+"?autoReconnect=true&useSSL=false",user, password);
+        // out.println(db + " database successfully opened.<br/><br/>");
+   
+        Statement stmt = con.createStatement();
+        ResultSet rs = stmt.executeQuery("SELECT * FROM anishell.Shelter WHERE shelter_id =" + shelter_id);  // run SQL query
+    
+        while (rs.next()) { 
+        %>
+            <h2 class="mt-4"> You are signed into Shelter: <%= rs.getString(2) %> </h2>
+        <% } %>
+        
+
     <!-- REPLACE LINKS WITH ACTUAL ADD/DELETE PAGES -->
     <a href="employee_home.jsp">
     <button class="inline_button">Add a Pet to Shelter</button>
@@ -52,47 +76,40 @@
     <button class="inline_button">Remove a Pet to Shelter</button>
     </a>
 
-    <% 
-    String db = "le";
-    String user = "root";
-    String password = "Turtle_1960";
-    %>
-
     <table border="1">
     <tr>
-        <td>SJSU_ID</td>
+        <td>Shelter_ID</td>
         <td>Name</td>
-        <td>Major</td>
+        <td>Address</td>
+        <td>Phone Number</td>
     </tr>
 
     <%
-    try { 
-        java.sql.Connection con; 
-        Class.forName("com.mysql.jdbc.Driver");
-        con =DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db+"?autoReconnect=true&useSSL=false",user, password);
-        // out.println(db + " database successfully opened.<br/><br/>");
-        
-        out.println("Existing pets in Shelter: <br/>");
-        Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM le.HW1");  
+        out.println("<br/><br/>Existing pets in Shelter:<br/>");
+        stmt = con.createStatement();
+        rs = stmt.executeQuery("SELECT * FROM anishell.Shelter");  
     
         while (rs.next()) { 
         %>
             <tr>
-            <td> <%= rs.getString(1) %> </td>
+            <td> <%= rs.getInt(1) %> </td>
             <td> <%= rs.getString(2) %> </td>
             <td> <%= rs.getString(3) %> </td>
+            <td> <%= rs.getString(4) %> </td>
             </tr>
+    
+        <% } %>
+
+        </table> <!--  end of table -->
+        
         <%
-        } 
-        rs.close();
-        stmt.close();
-        con.close();
+            rs.close();
+            stmt.close();
+            con.close();
         } catch(SQLException e) { 
         out.println("SQLException caught: " + e.getMessage()); 
     }
     %>
-        </table>
 
     <script src=
     "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
