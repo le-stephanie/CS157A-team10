@@ -1,0 +1,33 @@
+<!-- code referenced:
+ https://www.w3schools.com/html/html_forms.asp
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add an Animal into the Database</title>
+</head>
+<body>
+ <label for="dataEntry">Please insert the following information:</label><br>
+  <label for="name">Name:</label><br>
+  <input type="text" id="name" name="name"><br>
+  <label for="age">Age:</label><br>
+  <input type="text" id="color" name="color">
+  <label for="color">Color:</label><br>
+  <input type="text" id="color" name="color">
+
+  <label for="sex">Sex:</label><br>
+  <input type="radio" id="Female" name="sex" value="Female">
+  <label for="Female">Female</label><br>
+   <input type="radio" id="Male" name="sex" value="Male">
+  <label for="Male">Male</label><br>
+  
+  <label for="AdoptionStatus">Adoption Status:</label><br>
+ <input type="radio" id="notAdopted" name="AdoptionStatus" value=0>
+  <label for="notAdopted">Needs to be Adopted</label><br>
+   <input type="radio" id="lostAnimal" name="AdoptionStatus" value=2>
+  <label for="notAdopted">Lost Animal</label><br>
+  
+</body>
+</html>
