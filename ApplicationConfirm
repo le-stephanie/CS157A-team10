@@ -38,7 +38,7 @@
     <h1>
         <span> Home Page </span>
         <!-- sign out button goes back to user.jsp-->
-        <a href="login.jsp"> <!-- needs to be changed -->
+        <a href="HomePage.jsp"> 
             <button class='btn btn-success pull-right'>User Profile</button>
         </a>
     </h1>
@@ -49,7 +49,7 @@
   	<p class="w3-justify">We have received your application. We will contact you with 3-5 business days. </p>
 	</section>
 	
-    <!-- REPLACE LINKS WITH ACTUAL ADD/DELETE PAGES -->
+<!-- Return to HomePage Button -->
     <a href="HomePage.jsp">
     <button class="inline_button">Return to Home Page</button>
   
