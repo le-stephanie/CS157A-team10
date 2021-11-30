@@ -1,3 +1,4 @@
+<%@ page session="false" %>
 <!-- code referenced:
     https://www.studentstutorial.com/java-project/jsp-retrieve-data-using-mysql.php#
     https://www.geeksforgeeks.org/how-to-place-button-in-top-right-corner-using-bootstrap/
@@ -54,9 +55,9 @@
     %>
     
     <%
-    // gets the string input from login.jsp page "username" 
-    // as a String variable to use in SQL query
-    String shelter_id = request.getParameter("username"); 
+    // set shelter_id as a variable so that this value can persist through html pages
+    HttpSession session = request.getSession();
+    String shelter_id = session.getAttribute("user_id").toString();
 
     try { 
         java.sql.Connection con; 
@@ -150,6 +151,7 @@
         out.println("SQLException caught: " + e.getMessage()); 
     }
     %>
+
 
     <script src=
     "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">

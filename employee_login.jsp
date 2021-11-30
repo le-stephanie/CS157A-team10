@@ -30,7 +30,7 @@
 <body class="text-center">
       
     <main class="form-signin">
-    <form action="employee_home.jsp" method="GET">
+    <form action="pre-employee_home.jsp" method="GET">
         <h1 class="h3 mb-3 fw-normal">Welcome to the AniShel pet adoption site!</h1>
         <h1 class="h3 mb-3 fw-normal">Please sign in with your Shelter's ID</h1>
         <h2 class="h5 mb-3 fw-normal">(For the sake of the demo, ID's range from 101 to 115)</h2>

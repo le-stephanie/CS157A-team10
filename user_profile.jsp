@@ -1,8 +1,10 @@
+<%@ page session="false" %>
 <!-- code referenced:
     https://www.studentstutorial.com/java-project/jsp-retrieve-data-using-mysql.php#
     https://www.geeksforgeeks.org/how-to-place-button-in-top-right-corner-using-bootstrap/
     https://agirlandhermac.design/resources/side-side-html-buttons/
     https://www.w3schools.com/html/tryit.asp?filename=tryhtml_table_cellpadding
+    https://stackoverflow.com/questions/28242661/passing-data-from-jsp-page-to-multiple-jsp-pages
 -->
 
 <!doctype html>
@@ -54,9 +56,9 @@
     %>
     
     <%
-    // gets the string input from login.jsp page "username" 
-    // as a String variable to use in SQL query
-    String user_id = request.getParameter("username"); 
+    // set shelter_id as a variable so that this value can persist through html pages
+    HttpSession session = request.getSession();
+    String user_id = session.getAttribute("user_id").toString();
 
     try { 
         java.sql.Connection con; 

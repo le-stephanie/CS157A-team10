@@ -30,7 +30,7 @@
 <body class="text-center">
       
     <main class="form-signin">
-    <form action="home.jsp" method="GET">
+    <form action="pre-home.jsp" method="GET">
         <h1 class="h3 mb-3 fw-normal">Welcome to the AniShel pet adoption site!</h1>
         <h1 class="h3 mb-3 fw-normal">Please sign in with your User ID</h1>
         <h2 class="h5 mb-3 fw-normal">(For the sake of the demo, ID's range from 1 to 15)</h2>
@@ -55,10 +55,18 @@
     </form>
         <br/>
         <a href="employee_login.jsp">
-        <button class="btn btn-default">Switch to an Employee Login</button>
+        <button id="signin" class="btn btn-default">Switch to an Employee Login</button>
         </a>
     </main>
+    
+    <script> /*jslint sub: true, maxerr: 50, indent: 4, browser: true */
 
+    (function (global) {
+        document.getElementById("signin").addEventListener("click", function () {
+            global.localStorage.setItem("mySharedData", document.getElementById("output").value);
+        }, false);
+    }(window));
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
   </body>
