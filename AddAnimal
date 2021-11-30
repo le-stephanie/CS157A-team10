@@ -1,8 +1,9 @@
+<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*"%>
 <!-- NOTE: 
-1. use this to create a test table into your AniShell DB
+use this to create a test table into your AniShell DB
 			use AniShell;
 		CREATE TABLE testingAni(
 	pet_id int,
@@ -14,10 +15,7 @@
 	adoption_status BOOLEAN,
 	PRIMARY KEY(pet_id, shelter_id)
 );
- 
-
-
-2. in line 49 there's a note regarding chan  -->
+ -->
 
 <!DOCTYPE html>
 <html>
