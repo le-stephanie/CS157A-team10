@@ -72,3 +72,5 @@ out.println(sql);
 %>
  <a href="employee_home.jsp">
  <button class="inline_button">Return to Employee Home</button>
+ <a href="updateProcess.jsp">
+ <button class="inline_button">Continue to Update</button>
