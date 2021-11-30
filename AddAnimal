@@ -51,7 +51,7 @@
 </h1>
 
 <body>
-<form method="post" action="process.jsp">
+<form>
 pet_id:<br>
 <input type="text" name="petId">
 <br>
