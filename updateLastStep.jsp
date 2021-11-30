@@ -1,3 +1,4 @@
+<%@ page session="false" %>
 <!-- Code referenced: https://www.studentstutorial.com/java-project/jsp-update-data.php -->
 <!-- Custom styles for this template -->
     <link rel="stylesheet"
