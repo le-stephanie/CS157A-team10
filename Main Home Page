@@ -1,4 +1,4 @@
-
+<%@ page session="false" %>
 <!-- code referenced:
     https://www.studentstutorial.com/java-project/jsp-retrieve-data-using-mysql.php#
     https://www.geeksforgeeks.org/how-to-place-button-in-top-right-corner-using-bootstrap/
