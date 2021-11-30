@@ -34,6 +34,15 @@ String age=request.getParameter("age");
 String color=request.getParameter("color");
 String sex=request.getParameter("sex");
 String adoptionStatus=request.getParameter("adoption_status");
+
+
+//Adopt_Surrender Table
+String petId2 = request.getParameter("pet_id");
+String userId=request.getParameter("user_id");
+String adoptionStatus2=request.getParameter("adoption_status");
+
+
+
 if(petId != null)
 {
 Connection con = null;
@@ -53,6 +62,16 @@ ps.setString(5, color);
 ps.setString(6, sex);
 ps.setString(7, adoptionStatus);
 int i = ps.executeUpdate();
+
+//Adopt_Surrender Table  might need to change the 
+Class.forName("com.mysql.jdbc.Driver");
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/AniShell", "group10", "@n1shell"); //this part will need to change depending on your database
+Statement st=conn.createStatement();
+
+int y=st.executeUpdate("insert into Adopt_Surrender(user_id, pet_id, status_)values('"+userId+"','"+petId2+"','"+adoptionStatus2+"')");
+out.println("Data is successfully inserted!");
+
+
 if(i > 0)
 {
 out.print("Successfully Adopted");
