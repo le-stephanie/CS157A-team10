@@ -8,7 +8,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Employee Home Page</title>
+    <title>User Profile</title>
     <%@ page import="java.sql.*" %>
 
     <!-- Custom styles for this template -->
@@ -40,7 +40,7 @@
     
   <div class="container">
     <h1>
-        <span> Employee Home Page </span>
+        <span> User Profile </span>
         <!-- sign out button goes back to login.jsp-->
         <a href="login.jsp">
             <button class='btn btn-success pull-right'>Sign Out</button>
@@ -56,7 +56,7 @@
     <%
     // gets the string input from login.jsp page "username" 
     // as a String variable to use in SQL query
-    String shelter_id = request.getParameter("username"); 
+    String user_id = request.getParameter("username"); 
 
     try { 
         java.sql.Connection con; 
@@ -65,47 +65,44 @@
         // out.println(db + " database successfully opened.<br/><br/>");
    
         Statement stmt = con.createStatement();
-        ResultSet rs = stmt.executeQuery("SELECT * FROM anishell.Shelter WHERE shelter_id =" + shelter_id);  // run SQL query
+        ResultSet rs = stmt.executeQuery("SELECT user_name FROM anishell.User WHERE user_id =" + user_id);  // run SQL query
     
         while (rs.next()) { 
         %>
-            <h2 class="mt-4"> You are signed into Shelter: <%= rs.getString(2) %> </h2>
+            <h2 class="mt-4"> You are signed in as: <%= rs.getString(1) %> </h2>
         <% } %>
         
 
     <!-- REPLACE LINKS WITH ACTUAL ADD/DELETE PAGES -->
-    <a href="add_animal.jsp">
-    <button class="inline_button">Add a Pet to Shelter</button>
-    </a>
-    <a href="employee_home.jsp">
-    <button class="inline_button">Remove a Pet to Shelter</button>
+    <a href="home.jsp">
+    <button class="inline_button">Go Back to Home</button>
     </a>
 
     <table border="1">
     <tr>
-        <td>Pet ID</td>
-        <td>Name</td>
-        <td>Age</td>
-        <td>Color</td>
-        <td>Sex</td>
-        <td>Adoption Status</td>
+        <td>Shelter Name</td>
+        <td>Animal Name</td>
+        <td>Animal Age (years)</td>
+        <td>Animal Color</td>
+        <td>Animal Sex</td>
     </tr>
 
     <%
-        out.println("<br/><br/>Existing pets in shelter:<br/>");
+        out.println("<br/><br/>Pet(s) you applied for:<br/>");
         stmt = con.createStatement();
-        rs = stmt.executeQuery("SELECT * FROM anishell.Animal WHERE shelter_id =" + shelter_id);  
+        rs = stmt.executeQuery("SELECT s.name, a.name, a.age, a.color, a.sex" +
+        " FROM Animal a, User u, Adopt_Surrender ads, Shelter s" +      
+        " WHERE u.user_id = ads.user_id AND ads.pet_id = a.pet_id AND a.shelter_id = s.shelter_id" +
+        " AND ads.status = \"adopt\" AND ads.user_id = " + user_id);  
     
         while (rs.next()) { 
         %>
-            <!-- name, age, color, sex, adoption status -->
             <tr>
-            <td> <%= rs.getInt(1) %> </td>
-            <td> <%= rs.getString(3) %> </td>
-            <td> <%= rs.getInt(4) %> </td>
+            <td> <%= rs.getString(1) %> </td>
+            <td> <%= rs.getString(2) %> </td>
+            <td> <%= rs.getInt(3) %> </td>
+            <td> <%= rs.getString(4) %> </td>
             <td> <%= rs.getString(5) %> </td>
-            <td> <%= rs.getString(6) %> </td>
-            <td> <%= rs.getBoolean(7) %> </td>
             </tr>
     
         <% } %>
@@ -116,24 +113,25 @@
     <tr>
         <td>Date</td>
         <td>Time</td>
-        <td>User ID</td>
-        <td>Username</td>
-        <td>Phone Number</td>
+        <td>Shelter Name</td>
+        <td>Shelter Address</td>
+        <td>Shelter Phone Number</td>
     </tr>
 
     <%
         out.println("<br/><br/>Upcoming appointments:<br/>");
         stmt = con.createStatement();
-        rs = stmt.executeQuery("SELECT date, time, u.user_id, u.user_name, u.contact_info" +
+        rs = stmt.executeQuery("SELECT date, time, s.name, s.address, s.phone_number" +
         " FROM Shelter s, Contacts c, User u WHERE u.user_id = c.user_id" +
-        " AND s.shelter_id = c.shelter_id AND s.shelter_id =" + shelter_id);  
+        " AND s.shelter_id = c.shelter_id AND u.user_id =" + user_id);  
     
         while (rs.next()) { 
         %>
+            <!-- date, time, shelter name, shelter addr, shelter phone# -->
             <tr>
             <td> <%= rs.getDate(1) %> </td>
             <td> <%= rs.getTime(2) %> </td>
-            <td> <%= rs.getInt(3) %> </td>
+            <td> <%= rs.getString(3) %> </td>
             <td> <%= rs.getString(4) %> </td>
             <td> <%= rs.getString(5) %> </td>
             </tr>

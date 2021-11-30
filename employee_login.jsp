@@ -30,14 +30,14 @@
 <body class="text-center">
       
     <main class="form-signin">
-    <form action="home.jsp" method="GET">
+    <form action="employee_home.jsp" method="GET">
         <h1 class="h3 mb-3 fw-normal">Welcome to the AniShel pet adoption site!</h1>
-        <h1 class="h3 mb-3 fw-normal">Please sign in with your User ID</h1>
-        <h2 class="h5 mb-3 fw-normal">(For the sake of the demo, ID's range from 1 to 15)</h2>
+        <h1 class="h3 mb-3 fw-normal">Please sign in with your Shelter's ID</h1>
+        <h2 class="h5 mb-3 fw-normal">(For the sake of the demo, ID's range from 101 to 115)</h2>
 
         <!-- get username input to use in next page -->
         <div class="form-floating">
-            UserID: <input type="text" name="username"> 
+            UserID: <input type="text" name="username">
         </div>
 
         <div class="form-floating">
@@ -48,16 +48,16 @@
         <label> <input type="checkbox" value="remember-me"> Remember me </label>
         </div>
 
-
         <!-- button to switch to new page -->
         <button class="btn btn-default" input="submit">Sign in</button>
-
     </form>
         <br/>
-        <a href="employee_login.jsp">
-        <button class="btn btn-default">Switch to an Employee Login</button>
+        <a href="login.jsp">
+        <button class="btn btn-default">Switch to a Regular User Login</button>
         </a>
+
     </main>
+
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
