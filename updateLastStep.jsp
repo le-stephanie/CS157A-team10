@@ -69,3 +69,6 @@ out.println(sql);
 }
 }
 %>
+%>
+ <a href="employee_home.jsp">
+ <button class="inline_button">Return to Employee Home</button>
