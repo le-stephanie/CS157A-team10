@@ -70,6 +70,12 @@ Sex:<br>
 Adoption Status: please change to 1 <br>
 <input type="text" name="adoption_status" value="<%=resultSet.getString("adoption_status") %>">
 <br>
+
+Insert your User ID <br>
+<input type="text" name="user_id">
+<br>
+	
+	
 <br>
 <input type="submit" value="submit">
 </form>
