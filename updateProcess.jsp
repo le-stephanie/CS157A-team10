@@ -1,3 +1,4 @@
+<%@ page session="false" %>
 <!-- Code referenced: https://www.studentstutorial.com/java-project/jsp-update-data.php -->
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
