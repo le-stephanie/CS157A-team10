@@ -39,7 +39,7 @@
     <h1>
         <span> Home Page </span>
         <!-- sign out button goes back to user.jsp-->
-        <a href="home.jsp"> 
+        <a href="user_profile.jsp"> 
             <button class='btn btn-success pull-right'>User Profile</button>
         </a>
     </h1>

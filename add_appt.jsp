@@ -21,7 +21,7 @@
 
 <!DOCTYPE html>
 <html>
- <title> Add an Animal</title>
+ <title> Add an Appointment</title>
 
  <!-- Custom styles for this template -->
     <link rel="stylesheet"
@@ -43,7 +43,7 @@
     }	
     </style>	
 <h1>
-        <span> Add an Animal </span>
+        <span> Add an Appointment </span>
         <!-- sign out button goes back to Employee Account.jsp-->
         <a href="employee_home.jsp">
             <button class='btn btn-success pull-right'>Return to Employee Account</button>
