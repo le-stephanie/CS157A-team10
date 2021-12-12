@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 <!-- code referenced:
 	https://stackoverflow.com/questions/22369717/how-to-pass-a-value-from-one-jsp-to-another-jsp-page
     https://newbedev.com/how-to-have-two-headings-on-the-same-line-in-html
@@ -19,7 +18,7 @@
 			<%
 			String db = "anishell", 		
 			username = "root", 			
-			password = "Turtle_1960", //Switch with your own password
+			password = "Portal2", //Switch with your own password
 			tableOne = "animal",
 			tableTwo = "dog";
 			
@@ -48,7 +47,7 @@
 			
 			<div style="clear: both">
             	<h1 style="float: left">
-                	<a href="home.jsp" target="_self">AniShell</a>
+                	<a href="homepage.jsp" target="_self">AniShell</a>
             	</h1>
             	<h2 style="float: right">
                 	<a href="user_profile.jsp" target="_self">User Profile</a>

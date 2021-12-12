@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 <!-- code referenced:
     https://www.studentstutorial.com/java-project/jsp-retrieve-data-using-mysql.php#
     https://www.geeksforgeeks.org/how-to-place-button-in-top-right-corner-using-bootstrap/
@@ -21,7 +20,7 @@
 			<%
 			String db = "anishell", 		
 			username = "root", 			
-			password = "Turtle_1960",
+			password = "Portal2",
 			tableOne = "animal",
 			tableTwo = "cat";
 			
@@ -32,20 +31,20 @@
 			String litter_trained = request.getParameter("litter_trained");
 			
 			String find = " WHERE " + tableOne + ".pet_id" + " = " +tableTwo + ".pet_id";
-            if(!cat_breed.equals("null")){
-                find += " AND "+ tableTwo + ".Cat_breed = " + "'" + cat_breed + "'";
-            }
-            if(!color.equals("null")){
-                find += " AND animal.color = " + "'" + color + "'";
-            }
-            if(age != -1){
-                find += " AND animal.age = "+ age;
-            }
-            if(!litter_trained.equals("null")){
-                find += " AND cat.leash_trained = " + Boolean.parseBoolean(litter_trained);
-            }
-            if(!indoor_outdoor.equals("null")){
-                find +=  " AND cat.indoor_outdoor = " + "'" + indoor_outdoor + "'";
+			if(!cat_breed.equals("null")){
+				find += " AND "+ tableTwo + ".Cat_breed = " + "'" + cat_breed + "'";
+			}
+			if(!color.equals("null")){
+				find += " AND animal.color = " + "'" + color + "'";
+			}
+			if(age != -1){
+				find += " AND animal.age = "+ age;
+			}
+			if(!litter_trained.equals("null")){
+				find += " AND cat.leash_trained = " + Boolean.parseBoolean(litter_trained);
+			}
+			if(!indoor_outdoor.equals("null")){
+				find +=  " AND cat.indoor_outdoor = " + "'" + indoor_outdoor + "'";
 			}
 
 			try {
@@ -56,7 +55,7 @@
 			
 			<div style="clear: both">
             	<h1 style="float: left">
-                	<a href="home.jsp" target="_self">AniShell</a>
+                	<a href="homepage.jsp" target="_self">AniShell</a>
             	</h1>
             	<h2 style="float: right">
                 	<a href="user_profile.jsp" target="_self">User Profile</a>
@@ -105,7 +104,7 @@
 					out.println("SQLException caught: " + e.getMessage());
 				}
 				%>
-				<a href="SearchCat.jsp">
+				<a href="CatSearch.jsp">
         			<button type="button">Return to Search Cat</button>
     			</a>
             

@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 <!-- code referenced:
     https://www.studentstutorial.com/java-project/jsp-retrieve-data-using-mysql.php#
     https://www.geeksforgeeks.org/how-to-place-button-in-top-right-corner-using-bootstrap/
@@ -21,9 +20,10 @@
 			<%
 				String db = "anishell", 		
 				username = "root", 			
-				password = "Turtle_1960",
+				password = "Portal2",
 				tableOne = "animal",
 				tableTwo = "bunny"; 		 		
+
 				try {
 					java.sql.Connection con;
 					Class.forName("com.mysql.jdbc.Driver");
@@ -32,10 +32,10 @@
 			
 			<div style="clear: both">
             	<h1 style="float: left">
-                	<a href="home.jsp" target="_self">AniShell</a>
+                	<a href="homepage.jsp" target="_self">AniShell</a>
             	</h1>
             	<h2 style="float: right">
-                	<a href="login.jsp" target="_self">Sign Out</a>
+                	<a href="user_profile.jsp" target="_self">User Profile</a>
             	</h2>
         	</div>
         	<br><br><br><br>
@@ -55,7 +55,6 @@
         	<br>
         	
         	<!-- Columns -->
-			<div class="container">
         	<div class="row">
         	<!-- Left Column; Search checklist -->
             	<div class="column">
@@ -80,14 +79,14 @@
             			<label for="color">Color:</label><br>
             			<select name="color" id="color">
             				<option value="null">Default</option>
-                            <option value="black">Black</option>
-                            <option value="brown">Brown</option>
-                            <option value="white">White</option>
-                            <option value="tan">Tan</option>
-                            <option value="grey">Grey</option>
-                            <option value="brindle">Brindle</option>
-                            <option value="blue merle">Blue Merle</option>
-                            <option value="red merle">Red Merle</option>
+            				<option value="black">Black</option>
+            				<option value="brown">Brown</option>
+            				<option value="white">White</option>
+            				<option value="tan">Tan</option>
+            				<option value="grey">Grey</option>
+            				<option value="brindle">Brindle</option>
+            				<option value="blue merle">Blue Merle</option>
+            				<option value="red merle">Red Merle</option>
             			</select>
             			<br><br>
             			
@@ -103,6 +102,7 @@
             		</form>
             </div>
             <!-- Right Column, Search Result -->
+            <div class="container">
             <div class="column">
                 <table border = "1">
                     <tr>

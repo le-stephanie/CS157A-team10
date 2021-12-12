@@ -8,13 +8,13 @@
 	<html>
 		<head>
 			<meta charset="ISO-8859-1">
-			<link rel="stylesheet" href=
+			 <link rel="stylesheet"href=
 				"https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 			<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-   			 	pageEncoding="ISO-8859-1"%>
+    			pageEncoding="ISO-8859-1"%>
 			<%@ page import="java.sql.*"%>
 			<%@ page session="false" %>
-			<title>Bird Search Page</title>
+			<title>Cat Search Page</title>
 		</head>
 		<body>
 			<%
@@ -22,8 +22,8 @@
 			username = "root", 			
 			password = "Portal2",
 			tableOne = "animal",
-			tableTwo = "bird";	 		
-
+			tableTwo = "cat";
+			
 			try {
 				java.sql.Connection con;
 				Class.forName("com.mysql.jdbc.Driver");
@@ -35,19 +35,18 @@
                 	<a href="homepage.jsp" target="_self">AniShell</a>
             	</h1>
             	<h2 style="float: right">
-            		<% %>
-                	<a href="log_in.jsp" target="_self">Log-In</a>
+                	<a href="user_profile.jsp" target="_self">User Profile</a>
             	</h2>
         	</div>
         	<br><br><br><br>
         	
         	<!-- Buttons to go to other Search Pages  -->
         	<div>
-        		<a href="SearchCat.jsp">
-        			<button type="button">Search Cat</button>
+        		<a href="SearchDog.jsp">
+        			<button type="button">Search Dog</button>
         		</a>
-            	<a href="SearchDog.jsp">
-            		<button type="button">Search Dog</button> 
+            	<a href="SearchBird.jsp">
+            		<button type="button">Search Bird</button> 
             	</a>
             	<a href="SearchBunny.jsp">
             		<button type="button">Search Bunny</button>
@@ -60,8 +59,8 @@
         	<div class="row">
         	<!-- Left Column; Search checklist -->
             	<div class="column">
-            	<form action="BirdResult.jsp" method = "POST">
-            			<label for="age">Age: </label><br>
+            		<form action="CatResult.jsp" method = "Post">
+            			<label for="age">Age(years): </label><br>
             			<select name="age" id="age">
             				<option value="-1">Default</option>
             				<option value="0">0</option>
@@ -84,91 +83,99 @@
             			</select>
             			<br><br>
             			
+            			<label for="cat_breed">Breed:</label><br>
+            			<select name="cat_breed" id ="cat_breed">
+            				<option value= "null">Default</option>
+            				<option value="American Shorthair">American Shorthair</option>
+            				<option value="Persian">Persian</option>
+            				<option value="Bengal">Bengal</option>
+            				<option value="Rag Doll">Rag Doll</option>
+            			</select>
+            			<br><br>
+            			
             			<label for="color">Color:</label><br>
             			<select name="color" id="color">
-            				<option value="null">Default</option>
-            				<option value="Yellow">Yellow</option>
-            				<option value="Black">Black</option>
-            				<option value="Brown">Brown</option>
-            				<option value="White">White</option>
-            				<option value="Red">Red</option>
-            				<option value="Green">Green</option>
-            				<option value="Blue">Blue</option>
-            				<option value="Grey">Grey</option>
-            				<option value="Purple">Purple</option>
+            				<option value ="null">Default</option>
+            				<option value="yellow">Yellow</option>
+            				<option value="black">Black</option>
+            				<option value="brown">Brown</option>
+            				<option value="white">White</option>
+            				<option value="orange">Orange</option>
+            				<option value="tan">Tan</option>
+            				<option value="blue">Blue</option>
+            				<option value="orange">Orange</option>
+            				<option value="grey">Grey</option>
+            				<option value="red merle">Red Merle</option>
             			</select>
             			<br><br>
             			
-            			<label for="species">Species:</label><br>
-            			<select name="species" id="species">
+            			<label for="indoor_outdoor">Indoor or Outdoor:</label><br>
+            			<select name="indoor_outdoor" id="indoor_outdoor">
             				<option value="null">Default</option>
-            				<option value="Angry Bird">Angry Bird</option>
-            				<option value="Woodpecker">Woodpecker</option>
-            				<option value="Mc Awk">Mc Awk</option>
-            				<option value="Parrot">Parrot</option>
-            				<option value="Parakeet">Parakeet</option>
+            				<option value="indoor">Indoor</option>
+            				<option value="outdoor">Outdoor</option>
             			</select>
             			<br><br>
             			
-            			<label for="handling">Handling:</label><br>
-            			<select name="handling" id="handling">
-            				<option value="null">Default</option>
-            				<option value="Trained">Trained</option>
-            				<option value="Angry">Angry</option>
-            				<option value="Legendary">Legendary</option>
-            				<option value="Exotic">Exotic</option>
-            				<option value="Wild">Wild</option>
-            				<option value="Friendly">Friendly</option>
+            			<label for="litter_trained">Litter Trained:</label><br>
+            			<select name="litter_trained" id="litter_trained">
+            				<option value= "null">Default</option>
+            				<option value="true">Yes</option>
+            				<option value="false">No</option>
             			</select>
             			<br><br>
             			
             			<input type="submit" value="Find">
             		</form>
-            </div>
+            	</div>
+            
             <!-- Right Column, Search Result -->
-            <div class="column">
-                <table border = "1">
-                    <tr>
-                        <td>Name</td>
-                        <td>Age</td>
-                        <td>Sex</td>
-                        <td>Color</td>
-                        <td>Species</td>
-                        <td>Handling</td>
-                    </tr>
-                <%
+            	<div class="column">
+                	<table border = "1">
+                    	<tr>
+                        	<td>Name</td>
+                        	<td>Age</td>
+                        	<td>Sex</td>
+                        	<td>Color</td>
+                        	<td>Breed</td>
+                        	<td>Litter-Trained</td>
+                        	<td>Indoor/Outdoor</td>
+                        	<td>Link</td>
+                    	</tr>
+                    <%
 					Statement stmt = con.createStatement();
-                	ResultSet rs = stmt.executeQuery("SELECT " + tableOne + ".name, " + tableOne + ".age, " + tableOne + ".sex, " 
-    				+ tableOne + ".color, " + tableTwo + ".bird_species, "+ tableTwo + ".handling " + 
-    				"FROM " + db + "." + tableOne + ", " + db +"." + tableTwo + " WHERE " + tableOne + ".pet_id" + " = " +
-    				tableTwo + ".pet_id");
+                 	ResultSet rs = stmt.executeQuery("SELECT " + tableOne + ".name, " + tableOne + ".age, " + 
+					tableOne + ".sex, " + tableOne + ".color, " + tableTwo + ".Cat_breed, "+ tableTwo + 
+					".litter_trained, " + tableTwo + ".indoor_outdoor " + "FROM " + db + "." + tableOne + 
+					", " + db +"." + tableTwo + " WHERE " + tableOne + ".pet_id" + " = " + tableTwo + ".pet_id;");
 					while (rs.next()){
-						%>
+					%>
 						<tr>
-							<td><%=rs.getString(1) %></td>
-							<td><%=rs.getInt(2) %></td>
-							<td><%=rs.getString(3) %></td>
-							<td><%=rs.getString(4) %></td>
-							<td><%=rs.getString(5) %></td>
-							<td><%=rs.getString(6) %></td>
+							<td><%=rs.getString("animal.name") %></td>
+							<td><%=rs.getInt("animal.age") %></td>
+							<td><%=rs.getString("animal.sex") %></td>
+							<td><%=rs.getString("animal.color") %></td>
+							<td><%=rs.getString("cat.cat_breed") %></td>
+							<td><%=rs.getBoolean("cat.litter_trained") %></td>
+							<td><%=rs.getString("indoor_outdoor") %></td>
 						</tr>
 					
-					<%}%>
+				<%  } %>
 					
 					</table>
 					
 					<% 
 					stmt.close();
 					con.close();
-					rs.close();	
+					rs.close();
 					
 					} catch (SQLException e) {
 						out.println("SQLException caught: " + e.getMessage());
 					}
 					%>
-            </div>
-        </div>
-        </div>
+            	</div>
+        	</div>
+        	</div>
         <script src=
     "https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js">
     </script>
@@ -176,4 +183,4 @@
     "https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js">
     </script>
 		</body>
-	</html>
+</html>

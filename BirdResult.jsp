@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 <!-- code referenced:
     https://www.studentstutorial.com/java-project/jsp-retrieve-data-using-mysql.php#
     https://www.geeksforgeeks.org/how-to-place-button-in-top-right-corner-using-bootstrap/
@@ -21,7 +20,7 @@
 			<%
 			String db = "anishell", 		
 			username = "root", 			
-			password = "Turtle_1960",
+			password = "Portal2",
 			tableOne = "animal",
 			tableTwo = "bird";
 			
@@ -37,11 +36,12 @@
 				find += " AND "+ tableTwo + ".bird_species = " + "'" + bird_species + "'";
 			}
 			if(!handling.equals("null")){
-				find += " AND" + tableTwo + ".handling = " + "'" + handling + "'";
+				find += " AND " + tableTwo + ".handling = " + "'" + handling + "'";
 			}
 			if(age != -1){
 				find +=  " AND " + age + " = " + tableOne + ".age";
 			}
+
 			try {
 				java.sql.Connection con;
 				Class.forName("com.mysql.jdbc.Driver");
@@ -50,7 +50,7 @@
 			
 			<div style="clear: both">
             	<h1 style="float: left">
-                	<a href="home.jsp" target="_self">AniShell</a>
+                	<a href="homepage.jsp" target="_self">AniShell</a>
             	</h1>
             	<h2 style="float: right">
                 	<a href="user_profile.jsp" target="_self">Profile</a>
@@ -76,7 +76,7 @@
 				Statement stmt = con.createStatement();
                 ResultSet rs = stmt.executeQuery("SELECT " + tableOne + ".name, " + tableOne + ".age, " + tableOne + ".sex, " 
         		+ tableOne + ".color, " + tableTwo + ".bird_species, "+ tableTwo + ".handling " + 
-        		"FROM " + db + "." + tableOne + ", " + db +"." + tableTwo + find + ";");
+        		"FROM " + db + "." + tableOne + ", " + db +"." + tableTwo + find + " ;");
 				while (rs.next()){
 				%>
 					<tr>

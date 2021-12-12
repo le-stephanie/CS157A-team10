@@ -1,4 +1,3 @@
-<%@ page session="false" %>
 <!-- code referenced:
     https://www.studentstutorial.com/java-project/jsp-retrieve-data-using-mysql.php#
     https://www.geeksforgeeks.org/how-to-place-button-in-top-right-corner-using-bootstrap/
@@ -21,7 +20,7 @@
 			<%
 			String db = "anishell", 		
 			username = "root", 			
-			password = "Turtle_1960",
+			password = "Portal2",
 			tableOne = "animal",
 			tableTwo = "bunny"; 		 		
 			
@@ -30,14 +29,14 @@
 			int age = Integer.parseInt(request.getParameter("age"));
 			String find = " WHERE " + tableOne + ".pet_id" + " = " + tableTwo + ".pet_id";
 			if(!color.equals("null")){
-                find +=  " AND " + tableOne + ".color = " + "'" + color + "'";
-            }
-            if(!bunny_breed.equals("null")){
-                find += " AND " + tableTwo + ".bunny_breed = " + "'" + bunny_breed + "'";
-            }
-            if(age != -1){
-                find +=  " AND " + age + " = " + tableOne + ".age";
-            }
+				find +=  " AND " + tableOne + ".color = " + "'" + color + "'";
+			}
+			if(!bunny_breed.equals("null")){
+				find += " AND " + tableTwo + ".bunny_breed = " + "'" + bunny_breed + "'";
+			}
+			if(age != -1){
+				find +=  " AND " + age + " = " + tableOne + ".age";
+			}
 			try {
 				java.sql.Connection con;
 				Class.forName("com.mysql.jdbc.Driver");
@@ -46,7 +45,7 @@
 			
 			<div style="clear: both">
             	<h1 style="float: left">
-                	<a href="home.jsp" target="_self">AniShell</a>
+                	<a href="homepage.jsp" target="_self">AniShell</a>
             	</h1>
             	<h2 style="float: right">
                 	<a href="user_profile.jsp" target="_self">User Profile</a>
