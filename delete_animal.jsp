@@ -77,8 +77,8 @@ status (0: for unadopted || 1: for adopted):<br>
 </body>
 
 <%
-String petId=request.getParameter("petId");
-String shelId=request.getParameter("shelId");
+String petId=request.getParameter("pet_id");
+String shelId=request.getParameter("shelter_id");
 String name=request.getParameter("name");
 String age=request.getParameter("age");
 String color=request.getParameter("color");
@@ -94,7 +94,7 @@ try
 Class.forName("com.mysql.jdbc.Driver");
 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db+"?autoReconnect=true&useSSL=false",user, password); //this part will need to change depending on your database
 Statement st=con.createStatement();
-int i=st.executeUpdate("DELETE FROM Animal WHERE pet_id= "+ petId); //this is the part i'm stuck at 
+int i=st.executeUpdate("DELETE FROM Animal WHERE pet_id="+petId); //this is the part i'm stuck at 
 out.println("Data is successfully deleted!");
 }
 catch(Exception e)

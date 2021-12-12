@@ -68,9 +68,6 @@ Sex:<br>
 <input type="text" name="sex" value="<%=resultSet.getString("sex") %>"readonly>
 <br>
 Adoption Status: please change to 1 <br>
-<br>Insert your User ID <br>
-<input type="text" name="user_id">
-<br>
 <input type="text" name="adoption_status" value="<%=resultSet.getString("adoption_status") %>">
 <br>
 <br>

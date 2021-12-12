@@ -87,11 +87,9 @@
     <button class="inline_button">Update Animal Details</button>
     </a>
 
-    <!--
     <a href="add_appt.jsp">
     <button class="inline_button">Add an Appointment</button>
     </a>
-    -->
 
     <table border="1">
     <tr>
