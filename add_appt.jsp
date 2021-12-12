@@ -3,22 +3,6 @@
 <%@ page import="java.sql.*"%>
 <%@ page session="false" %>
 
-<!-- NOTE: 
-1. use this to create a test table into your AniShell DB
-			use AniShell;
-		CREATE TABLE testingAni(
-	pet_id int,
-	shelter_id int ,
-	name CHAR(30),
-	age INT,
-	color CHAR(30),
-	sex CHAR(1), 
-	adoption_status BOOLEAN,
-	PRIMARY KEY(pet_id, shelter_id)
-);
- 
-2. in line 49 there's a note regarding chan  -->
-
 <!DOCTYPE html>
 <html>
  <title> Add an Appointment</title>
@@ -52,39 +36,29 @@
 
 <body>
 <form>
-pet_id:<br>
+shelter_id:<br>
 <input type="text" name="petId">
 <br>
-shelter_id
+user_id:
 <br>
-<input type="text" name="shelId">
+<input type="text" name="user_id">
 <br>
-name:<br>
-<input type="text" name="name">
+date (format: YYYY-MM-DD):<br>
+<input type="text" name="date">
 <br>
-age:<br>
-<input type="text" name="age">
+time (24 Hours):<br>
+<input type="text" name="time">
 <br>
-color:<br>
-<input type="text" name="color">
-<br>
-sex (M or F):<br>
-<input type="text" name="sex">
-<br>
-status (0: for unadopted):<br>
-<input type="text" name="status">
 <input type="submit" value="submit">
 </form>
 </body>
 
 <%
-String petId=request.getParameter("petId");
-String shelId=request.getParameter("shelId");
-String name=request.getParameter("name");
-String age=request.getParameter("age");
-String color=request.getParameter("color");
-String sex=request.getParameter("sex");
-String status=request.getParameter("status");
+HttpSession session = request.getSession();
+String shelter_id = session.getAttribute("user_id").toString();
+String user_id=request.getParameter("user_id");
+String date=request.getParameter("date");
+String time=request.getParameter("time");
 
 String db = "anishell";
 String user = "root";
@@ -96,7 +70,7 @@ Class.forName("com.mysql.jdbc.Driver");
 Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/"+db+"?autoReconnect=true&useSSL=false",user, password); //this part will need to change depending on your database
 Statement st=con.createStatement();
 
-int i=st.executeUpdate("insert into Animal(pet_id, shelter_id, name,age, color, sex, adoption_status)values('"+petId+"','"+shelId+"','"+name+"','"+age+"','"+color+"','"+sex+"','"+status+"')");
+int i=st.executeUpdate("insert into Contacts(shelter_id, user_id, date, time)values('"+shelter_id+"','"+user_id+"','"+date+"','"+time+"')");
 out.println("Data is successfully inserted!");
 }
 catch(Exception e)
